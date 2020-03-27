@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PLYMOUTH_LOGO_FILE="/usr/share/pixmaps/system-logo-white.png"
+PLYMOUTH_LOGO_FILE="/usr/share/plymouth/themes/Rosa-EE/rosa.png"
 PLYMOUTH_THEME=$(plymouth-set-default-theme)
 
 inst_multiple plymouthd plymouth \
