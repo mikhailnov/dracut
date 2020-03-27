@@ -382,6 +382,8 @@ if [ -n "$reloadsysrootmountunit" ]; then
 fi
 
 ROOTFLAGS="$(getarg rootflags)"
+# always use noatime option for live-rw
+ROOTFLAGS="-o noatime,"$( echo "$ROOTFLAGS" | sed -e 's/\w*atime\b//g' )
 
 if [ -n "$overlayfs" ]; then
     mkdir -m 0755 /run/rootfsbase
