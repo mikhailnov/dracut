@@ -2301,31 +2301,31 @@ fi
 case $compress in
     bzip2 | lbzip2)
         if [[ $compress == lbzip2 ]] || command -v "$DRACUT_COMPRESS_LBZIP2" &> /dev/null; then
-            compress="$DRACUT_COMPRESS_LBZIP2 -9"
+            compress="$DRACUT_COMPRESS_LBZIP2"
         else
-            compress="$DRACUT_COMPRESS_BZIP2 -9"
+            compress="$DRACUT_COMPRESS_BZIP2"
         fi
         ;;
     lzma)
-        compress="$DRACUT_COMPRESS_LZMA -9 -T0"
+        compress="$DRACUT_COMPRESS_LZMA -T0"
         ;;
     xz)
         compress="$DRACUT_COMPRESS_XZ --check=crc32 --lzma2=dict=1MiB -T0"
         ;;
     gzip | pigz)
         if [[ $compress == pigz ]] || command -v "$DRACUT_COMPRESS_PIGZ" &> /dev/null; then
-            compress="$DRACUT_COMPRESS_PIGZ -9 -n -T -R"
+            compress="$DRACUT_COMPRESS_PIGZ -n -T -R"
         elif command -v gzip &> /dev/null && $DRACUT_COMPRESS_GZIP --help 2>&1 | grep -q rsyncable; then
-            compress="$DRACUT_COMPRESS_GZIP -n -9 --rsyncable"
+            compress="$DRACUT_COMPRESS_GZIP -n --rsyncable"
         else
-            compress="$DRACUT_COMPRESS_GZIP -n -9"
+            compress="$DRACUT_COMPRESS_GZIP -n"
         fi
         ;;
     lzo | lzop)
-        compress="$DRACUT_COMPRESS_LZOP -9"
+        compress="$DRACUT_COMPRESS_LZOP"
         ;;
     lz4)
-        compress="$DRACUT_COMPRESS_LZ4 -l -9"
+        compress="$DRACUT_COMPRESS_LZ4 -l"
         ;;
     zstd)
         compress="$DRACUT_COMPRESS_ZSTD -15 -q -T0"
