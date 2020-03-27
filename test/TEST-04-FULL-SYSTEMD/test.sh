@@ -165,13 +165,14 @@ EOF
         inst /usr/lib/systemd/system/dbus-daemon.service
 
         (
-            echo "FONT=eurlatgr"
+            echo "FONT=latarcyrheb-sun16"
             echo "KEYMAP=us"
         ) >$initrd/etc/vconsole.conf
 
         # install basic keyboard maps and fonts
         for i in \
-            /usr/lib/kbd/consolefonts/eurlatgr* \
+                /usr/lib/kbd/consolefonts/eurlatgr* \
+                /usr/lib/kbd/consolefonts/latarcyrheb-sun16* \
                 /usr/lib/kbd/keymaps/{legacy/,/}include/* \
                 /usr/lib/kbd/keymaps/{legacy/,/}i386/include/* \
                 /usr/lib/kbd/keymaps/{legacy/,/}i386/qwerty/us.*; do
