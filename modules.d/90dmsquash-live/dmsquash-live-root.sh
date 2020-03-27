@@ -13,7 +13,12 @@ if getargbool 0 rd.live.debug -n -y rdlivedebug; then
 fi
 
 [ -z "$1" ] && exit 1
-livedev="$1"
+livedev=$(readlink -f $1)
+if [ "`echo $livedev | grep -c /dev/sd`" = "1" -a "`cat /proc/cmdline | grep -c LABEL`" = "1" ]; then
+    livedev=`echo $livedev | sed 's/[0-9]*//g'`
+fi
+echo $livedev > /var/log/livedev.name
+
 
 # parse various live image specific options that make sense to be
 # specified as their own things
